@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message Units {
+    int32 unit = 1;
+}
+
+message Temperature {
+    double temperature = 1;
+}
+
+service  TemperatureService{
+    rpc Measure (Units) returns (Temperature);
+}
