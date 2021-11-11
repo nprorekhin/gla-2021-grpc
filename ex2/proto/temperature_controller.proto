@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+service  TemperatureControllerService {
+  rpc Measure (MeasureRequest) returns (MeasureResponse);
+  rpc Configure (ControllerSettingsRequest) returns (EmptyResponse);
+}
+
+enum TemperatureUnit {
+  CELSIUS = 0;
+  FAHRENHEIT = 1;
+}
+
+message MeasureRequest {
+  TemperatureUnit unit = 1;
+}
+
+message MeasureResponse {
+  double temperature = 1;
+}
+
+message ControllerSettingsRequest {
+  double temperature_setpoint = 1;
+  TemperatureUnit unit = 2;
+  bool enabled = 3;
+}
+
+message EmptyResponse {
+  string empty = 1;
+}
