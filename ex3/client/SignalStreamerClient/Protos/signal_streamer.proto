@@ -1,0 +1,17 @@
+syntax = "proto3";
+option csharp_namespace = "SignalStreamerClient";
+
+
+service  SignalStreamer{
+  rpc GetDataStream (ChannelNumber) returns (stream Waveform);
+}
+
+message ChannelNumber {
+  int32 channel = 1;
+}
+
+message Waveform {
+  double startTime = 1; 
+  double dt = 2;
+  repeated double samples = 3;
+}
